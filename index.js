@@ -67,7 +67,9 @@ const questions = () => {
             }
         },
     ])
+
 };
+
 
 // Function to initialize app
 function init() {
@@ -77,3 +79,9 @@ function init() {
 
 // Function call to initialize app
 init();
+
+// Gotta break this down cause im tired
+// Manager prompts are done
+//Add options menu which triggers the right prompt area
+//Make prompts for the other 3
+//After you hit done it triggers the generate function
