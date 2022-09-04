@@ -79,11 +79,72 @@ const select = () => {
             name: 'empSelect',
             choices: ['Engineer', 'Intern', 'Done']
         },
-    ]).then(function (selection) {
-        for(let i = 0; i < selection.empSelect; i++) {
-            if (selection.empSelect = 0) {
-                Engineer();
-            }
+    ])
+    .then((answer) => {
+        switch (answer.empSelect) {
+            case 'Engineer': 
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    message: 'Enter engineers name.',
+                    name: 'engName',
+                    validate: name => {
+                        if (name) {
+                            return true;
+                        }
+                        else {
+                            console.log("Please enter a name...");
+                            return false;
+                        }
+                    }
+                },
+        
+                {
+                    type: 'input',
+                    message: 'Enter employee ID.',
+                    name: 'id',
+                    validate: name => {
+                        if (name) {
+                            return true;
+                        }
+                        else {
+                            console.log("Please enter your ID.");
+                            return false;
+                        }
+                    }
+                },
+                {
+                    type: 'input',
+                    message: 'Enter engineers Github name.',
+                    name: 'github',
+                    validate: name => {
+                        if (name) {
+                            return true;
+                        }
+                        else {
+                            console.log("Please enter github name.");
+                            return false;
+                        }
+                    }
+                },
+                {
+                    type: 'input',
+                    message: 'Enter engineers email.',
+                    name: 'email',
+                    validate: email => {
+        
+                       validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+        
+                        if (validEmail) {
+                            return true;
+                        }
+                        else {
+                            console.log("Please enter a valid email");
+                            return false;
+                        }
+                    }
+                },
+            ])
         }
     })
 }
@@ -158,7 +219,8 @@ const Engineer = () => {
 
 // Function to initialize app
 function init() {
-    select();
+    Manager()
+    .then(select)
 }
 
 // Function call to initialize app
