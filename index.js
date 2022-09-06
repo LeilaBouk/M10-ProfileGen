@@ -61,7 +61,7 @@ const Manager = () => {
                     return true;
                 }
                 else {
-                    console.log("Please enter a valid email");
+                    console.log(" < Please enter a valid email");
                     return false;
                 }
             }
@@ -80,6 +80,7 @@ const select = () => {
             choices: ['Engineer', 'Intern', 'Done']
         },
     ])
+    // ENGINEER
     .then((answer) => {
         switch (answer.empSelect) {
             case 'Engineer': 
@@ -139,82 +140,83 @@ const select = () => {
                             return true;
                         }
                         else {
-                            console.log("Please enter a valid email");
+                            console.log(" < Please enter a valid email");
                             return false;
                         }
                     }
                 },
             ])
+
+            //INTERN
+            case 'Intern': 
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    message: 'Enter interns name.',
+                    name: 'intName',
+                    validate: name => {
+                        if (name) {
+                            return true;
+                        }
+                        else {
+                            console.log("Please enter a name...");
+                            return false;
+                        }
+                    }
+                },
+        
+                {
+                    type: 'input',
+                    message: 'Enter employee ID.',
+                    name: 'id',
+                    validate: name => {
+                        if (name) {
+                            return true;
+                        }
+                        else {
+                            console.log("Please enter your ID.");
+                            return false;
+                        }
+                    }
+                },
+                {
+                    type: 'input',
+                    message: 'Enter interns school.',
+                    name: 'github',
+                    validate: name => {
+                        if (name) {
+                            return true;
+                        }
+                        else {
+                            console.log("Please enter github name.");
+                            return false;
+                        }
+                    }
+                },
+                {
+                    type: 'input',
+                    message: 'Enter interns email.',
+                    name: 'email',
+                    validate: email => {
+        
+                       validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
+        
+                        if (validEmail) {
+                            return true;
+                        }
+                        else {
+                            console.log(" < Please enter a valid email");
+                            return false;
+                        }
+                    }
+                },
+            ])
+            case 'Done': 
+            return;
         }
     })
 }
-
-//ENGINEER 
-const Engineer = () => {
-
-    return inquirer.prompt([
-        {
-            type: 'input',
-            message: 'Enter engineers name.',
-            name: 'engName',
-            validate: name => {
-                if (name) {
-                    return true;
-                }
-                else {
-                    console.log("Please enter a name...");
-                    return false;
-                }
-            }
-        },
-
-        {
-            type: 'input',
-            message: 'Enter employee ID.',
-            name: 'id',
-            validate: name => {
-                if (name) {
-                    return true;
-                }
-                else {
-                    console.log("Please enter your ID.");
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
-            message: 'Enter engineers Github name.',
-            name: 'github',
-            validate: name => {
-                if (name) {
-                    return true;
-                }
-                else {
-                    console.log("Please enter github name.");
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
-            message: 'Enter engineers email.',
-            name: 'email',
-            validate: email => {
-
-               validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
-
-                if (validEmail) {
-                    return true;
-                }
-                else {
-                    console.log("Please enter a valid email");
-                    return false;
-                }
-            }
-        },
-    ])
-};
+    
 
 
 // Function to initialize app
