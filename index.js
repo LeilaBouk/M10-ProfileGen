@@ -2,6 +2,43 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+//GENERATE HTML
+
+const generateHTML = (Manager) =>
+`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="row">
+
+    <div class="card">
+        <img src="./assets/marina.png" class="avatar">
+        <div class="container">
+          <h4><b>Manager</b></h4>
+          <p>${Manager.mangName}</p>
+          <p>Employee ID: ${Manager.mangid}</p>
+          <p>Office No: ${Manager.mangoff}</p>
+          <p><a
+            href="mailto:${Manager.mangemail}">
+            ${Manager.mangemail}</a></p>
+        </div>
+      </div>
+
+    </div>
+
+    
+</body>
+</html>
+`;
+
 // MANAGER
 const Manager = () => {
 
@@ -223,52 +260,22 @@ const select = () => {
 function init() {
     Manager()
     .then(select)
+    .then((answers) => {
+        const htmlPageContent = generateHTML(answers);
+    
+        fs.writeFile('./website/index.html', htmlPageContent, (err) =>
+          err ? console.log(err) : console.log('Successfully created index.html!')
+        );
+      });
 }
 
 // Function call to initialize app
 init()
 
-//Generate HTML Page
 
-const generateHTML = (Manager) =>
+// .then((data) => {
 
-`
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
-
-<div class="row">
-
-    <div class="card">
-        <img src="./assets/marina.png" class="avatar">
-        <div class="container">
-          <h4><b>Manager</b></h4>
-          <p>${Manager.mangName}</p>
-          <p>Employee ID: ${Manager.mangid}</p>
-          <p>Office No: ${Manager.mangoff}</p>
-          <p><a
-            href="mailto:${Manager.mangemail}">
-            ${Manager.mangemail}</a></p>
-        </div>
-      </div>
-
-    </div>
-
-    
-</body>
-</html>
-`
-
-.then((data) => {
-
-    console.log(data)
-    fs.writeFile('./website/index.html', generateHTML(data), (err) =>
-    err ? console.log(err) : console.log('Your page is now available'));
-})
+//     console.log(data)
+//     fs.writeFile('./website/index.html', generateHTML(data), (err) =>
+//     err ? console.log(err) : console.log('Your page is now available'));
+// })
