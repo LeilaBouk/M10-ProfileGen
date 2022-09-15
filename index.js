@@ -2,42 +2,11 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-//GENERATE HTML
+//Include other needed files
+const HTMLgen = require('./utils/generateHtml');
 
-const generateHTML = (Manager) =>
-`
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
-
-<div class="row">
-
-    <div class="card">
-        <img src="./assets/marina.png" class="avatar">
-        <div class="container">
-          <h4><b>Manager</b></h4>
-          <p>${Manager.mangName}</p>
-          <p>Employee ID: ${Manager.mangid}</p>
-          <p>Office No: ${Manager.mangoff}</p>
-          <p><a
-            href="mailto:${Manager.mangemail}">
-            ${Manager.mangemail}</a></p>
-        </div>
-      </div>
-
-    </div>
-
-    
-</body>
-</html>
-`;
+//employees array
+const Employees = [];
 
 // MANAGER
 const Manager = () => {
@@ -112,7 +81,7 @@ const select = () => {
     return inquirer.prompt([
         {
             type: 'list',
-            message: 'Would you like to add en employee?.',
+            message: 'Would you like to add an employee?.',
             name: 'empSelect',
             choices: ['Engineer', 'Intern', 'Done']
         },
