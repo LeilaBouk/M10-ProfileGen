@@ -8,7 +8,7 @@ const HTMLgen = require('./utils/generateHtml');
 //employees array
 const Employees = [];
 
-// MANAGER
+// MANAGER QUESTIONS -------------------------------------
 const Manager = () => {
 
     return inquirer.prompt([
@@ -30,7 +30,7 @@ const Manager = () => {
         {
             type: 'input',
             message: 'Enter employee ID.',
-            name: 'mangid',
+            name: 'mangID',
             validate: name => {
                 if (name) {
                     return true;
@@ -44,7 +44,7 @@ const Manager = () => {
         {
             type: 'input',
             message: 'Enter your office number.',
-            name: 'mangoff',
+            name: 'mangOffice',
             validate: name => {
                 if (name) {
                     return true;
@@ -58,7 +58,7 @@ const Manager = () => {
         {
             type: 'input',
             message: 'Enter your email.',
-            name: 'mangemail',
+            name: 'mangEmail',
             validate: email => {
 
                validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
@@ -72,10 +72,16 @@ const Manager = () => {
                 }
             }
         },
+        {
+            type: 'list',
+            message: 'Please choose a profile image',
+            name: 'mangImage',
+            choices: ['Eel', 'Tree', 'Jindo', 'Computer', 'Marina']
+        },
     ])
 };
 
-//More Employees
+// EMPLOYEE SELECT -------------------------------------
 const select = () => {
 
     return inquirer.prompt([
@@ -86,7 +92,8 @@ const select = () => {
             choices: ['Engineer', 'Intern', 'Done']
         },
     ])
-    // ENGINEER
+
+// ENGINEER QUESTIONS -------------------------------------
     .then((answer) => {
         switch (answer.empSelect) {
             case 'Engineer': 
@@ -153,7 +160,7 @@ const select = () => {
                 },
             ])
 
-            //INTERN
+// INTERN QUESTIONS -------------------------------------
             case 'Intern': 
             inquirer.prompt([
                 {
@@ -217,6 +224,8 @@ const select = () => {
                     }
                 },
             ])
+
+// DONE SELECTION -------------------------------------
             case 'Done': 
             return;
         }
@@ -228,23 +237,24 @@ const select = () => {
 // Function to initialize app
 function init() {
     Manager()
-    .then(select)
+    // .then(select)
     .then((answers) => {
-        const htmlPageContent = generateHTML(answers);
-    
-        fs.writeFile('./website/index.html', htmlPageContent, (err) =>
-          err ? console.log(err) : console.log('Successfully created index.html!')
+        const htmlContent = HTMLgen(answers);
+
+        fs.copyFile('./dist/style.css', './website/style.css' , (err) => 
+        err ? console.log(err) : console.log('Page Created'))
+        fs.writeFile('./website/index.html', htmlContent, (err) => 
+        err ? console.log(err) : console.log('Page Created')
         );
-      });
+    });
+
 }
 
 // Function call to initialize app
 init()
 
 
-// .then((data) => {
-
-//     console.log(data)
-//     fs.writeFile('./website/index.html', generateHTML(data), (err) =>
-//     err ? console.log(err) : console.log('Your page is now available'));
-// })
+//=============================================================================
+// TO DO
+// SO after each employee the data should be written and added to the array
+// After its written then ask again if an employee should be added
