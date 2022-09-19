@@ -5,9 +5,6 @@ const fs = require('fs');
 //Include other needed files
 const HTMLgen = require('./utils/generateHtml');
 
-//employees array
-const Employees = [];
-
 // MANAGER QUESTIONS -------------------------------------
 const Manager = () => {
 
@@ -116,7 +113,7 @@ const select = () => {
                 {
                     type: 'input',
                     message: 'Enter employee ID.',
-                    name: 'id',
+                    name: 'engID',
                     validate: name => {
                         if (name) {
                             return true;
@@ -130,7 +127,7 @@ const select = () => {
                 {
                     type: 'input',
                     message: 'Enter engineers Github name.',
-                    name: 'github',
+                    name: 'engGithub',
                     validate: name => {
                         if (name) {
                             return true;
@@ -144,7 +141,7 @@ const select = () => {
                 {
                     type: 'input',
                     message: 'Enter engineers email.',
-                    name: 'email',
+                    name: 'engEmail',
                     validate: email => {
         
                        validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
@@ -157,6 +154,12 @@ const select = () => {
                             return false;
                         }
                     }
+                },
+                {
+                    type: 'list',
+                    message: 'Please choose a profile image',
+                    name: 'engImage',
+                    choices: ['Eel', 'Tree', 'Jindo', 'Computer', 'Marina']
                 },
             ])
             break;
@@ -182,7 +185,7 @@ const select = () => {
                 {
                     type: 'input',
                     message: 'Enter employee ID.',
-                    name: 'id',
+                    name: 'intID',
                     validate: name => {
                         if (name) {
                             return true;
@@ -196,7 +199,7 @@ const select = () => {
                 {
                     type: 'input',
                     message: 'Enter interns school.',
-                    name: 'github',
+                    name: 'intSchool',
                     validate: name => {
                         if (name) {
                             return true;
@@ -210,7 +213,7 @@ const select = () => {
                 {
                     type: 'input',
                     message: 'Enter interns email.',
-                    name: 'email',
+                    name: 'intEmail',
                     validate: email => {
         
                        validEmail = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(email);
@@ -223,6 +226,12 @@ const select = () => {
                             return false;
                         }
                     }
+                },
+                {
+                    type: 'list',
+                    message: 'Please choose a profile image',
+                    name: 'intImage',
+                    choices: ['Eel', 'Tree', 'Jindo', 'Computer', 'Marina']
                 },
             ])
             break;
@@ -259,7 +268,3 @@ function init() {
 init()
 
 
-//=============================================================================
-// TO DO
-// SO after each employee the data should be written and added to the array
-// After its written then ask again if an employee should be added
