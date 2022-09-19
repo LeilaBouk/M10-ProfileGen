@@ -159,6 +159,7 @@ const select = () => {
                     }
                 },
             ])
+            break;
 
 // INTERN QUESTIONS -------------------------------------
             case 'Intern': 
@@ -224,6 +225,7 @@ const select = () => {
                     }
                 },
             ])
+            break;
 
 // DONE SELECTION -------------------------------------
             case 'Done': 
@@ -237,16 +239,19 @@ const select = () => {
 // Function to initialize app
 function init() {
     Manager()
-    // .then(select)
     .then((answers) => {
         const htmlContent = HTMLgen(answers);
 
+        // Copy the CSS sample file
         fs.copyFile('./dist/style.css', './website/style.css' , (err) => 
         err ? console.log(err) : console.log('Page Created'))
+
+        // Create the index with info filled in
         fs.writeFile('./website/index.html', htmlContent, (err) => 
         err ? console.log(err) : console.log('Page Created')
         );
-    });
+    })
+    .then(select)
 
 }
 
