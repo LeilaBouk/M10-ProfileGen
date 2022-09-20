@@ -15,6 +15,20 @@ const Manager = () => {
     return inquirer.prompt([
         {
             type: 'input',
+            message: 'Enter company name',
+            name: 'compName',
+            validate: name => {
+                if (name) {
+                    return true;
+                }
+                else {
+                    console.log("Please enter a name...");
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
             message: 'Enter managers name.',
             name: 'mangName',
             validate: name => {

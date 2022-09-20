@@ -1,5 +1,5 @@
 
-  const HTMLgen = ({ mangName, mangID, mangOffice, mangEmail, mangImage}) =>
+  const HTMLgen = ({ compName, mangName, mangID, mangOffice, mangEmail, mangImage}) =>
 `
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +11,10 @@
     <title>Document</title>
 </head>
 <body>
+
+<header>
+<h1>${compName}</h1>
+</header>
 
 <div class="row">
 
@@ -26,10 +30,6 @@
             ${mangEmail}</a></p>
         </div>
       </div>
-
-    </div>
-
-    <div class="row" id="employees">
 
 
 `;
