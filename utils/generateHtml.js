@@ -17,8 +17,8 @@
     <div class="card" id="manager">
         <img src="../assets/${mangImage}.png" class="avatar">
         <div class="container">
-          <h4><b>Manager</b></h4>
-          <p> ${mangName} </p>
+          <h4><b>${mangName}</b></h4>
+          <p class="title"> Manager </p>
           <p>Employee ID: ${mangID} </p>
           <p>Office No: ${mangOffice} </p>
           <p><a

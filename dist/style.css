@@ -22,6 +22,16 @@
     padding: 2px 16px;
   }
 
+  .container h4 {
+    font-size: 23px;
+    text-align: center;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+
   .avatar {
     width: 100%;
   }
