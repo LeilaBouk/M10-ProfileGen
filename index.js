@@ -4,6 +4,10 @@ const fs = require('fs');
 
 //Include other needed files
 const HTMLgen = require('./utils/generateHtml');
+const internHtml = require('./utils/internHtml');
+const engHtml = require('./utils/engHtml');
+const doneHtml = require('./utils/doneHtml');
+
 
 // MANAGER QUESTIONS -------------------------------------
 const Manager = () => {
@@ -73,7 +77,7 @@ const Manager = () => {
             type: 'list',
             message: 'Please choose a profile image',
             name: 'mangImage',
-            choices: ['Eel', 'Tree', 'Jindo', 'Computer', 'Marina']
+            choices: ['cat', 'plant', 'candy', 'computer']
         },
     ])
 };
@@ -159,9 +163,18 @@ const select = () => {
                     type: 'list',
                     message: 'Please choose a profile image',
                     name: 'engImage',
-                    choices: ['Eel', 'Tree', 'Jindo', 'Computer', 'Marina']
+                    choices: ['cat', 'plant', 'candy', 'computer']
                 },
             ])
+            .then((answers) => {
+                const htmlContent = engHtml(answers);
+        
+                // Add an engineer
+                fs.appendFileSync('./website/index.html', htmlContent, (err) => 
+                err ? console.log(err) : console.log('Page Created')
+                );
+            })
+            .then(select)
             break;
 
 // INTERN QUESTIONS -------------------------------------
@@ -231,13 +244,28 @@ const select = () => {
                     type: 'list',
                     message: 'Please choose a profile image',
                     name: 'intImage',
-                    choices: ['Eel', 'Tree', 'Jindo', 'Computer', 'Marina']
+                    choices: ['cat', 'plant', 'candy', 'computer']
                 },
             ])
+            .then((answers) => {
+                const htmlContent = internHtml(answers);
+        
+                // add an intern
+                fs.appendFileSync('./website/index.html', htmlContent, (err) => 
+                err ? console.log(err) : console.log('Page Created')
+                );
+            })
+            .then(select)
             break;
 
 // DONE SELECTION -------------------------------------
-            case 'Done': 
+            case 'Done':
+                
+                    const htmlContent = doneHtml;
+                    // cap off the html file
+                    fs.appendFileSync('./website/index.html', htmlContent, (err) => 
+                    err ? console.log(err) : console.log('Page Created')
+                    );
             return;
         }
     })

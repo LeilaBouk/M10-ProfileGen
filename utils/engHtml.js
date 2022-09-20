@@ -6,7 +6,7 @@ const engHtml = ({ engImage, engName, engID, engEmail, engGithub}) =>
   <h4><b>engern</b></h4>
   <p> ${engName} </p>
   <p>Employee ID: ${engID} </p>
-  <p>School: ${engGithub} </p>
+  <p>Github: <a href="https://github.com/${engGithub}" target="_blank">${engGithub}</a> </p>
   <p><a
     href="mailto:${engEmail}">
     ${engEmail}</a></p>

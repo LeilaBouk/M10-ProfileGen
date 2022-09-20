@@ -32,10 +32,6 @@
     <div class="row" id="employees">
 
 
-        </div>
-    
-</body>
-</html>
 `;
 
 module.exports = HTMLgen;
