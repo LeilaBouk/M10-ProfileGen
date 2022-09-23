@@ -8,6 +8,11 @@ const internHtml = require('./utils/internHtml');
 const engHtml = require('./utils/engHtml');
 const doneHtml = require('./utils/doneHtml');
 
+//Classes requirement 
+const employee = require('./classes/employee');
+const manager = require('./classes/manager');
+const intern = require('./classes/intern');
+const engineer = require('./classes/engineer');
 
 // MANAGER QUESTIONS -------------------------------------
 const Manager = () => {
