@@ -1,3 +1,11 @@
+header {
+  overflow: hidden;
+  background-color: #dcdcdc;
+  padding: 20px 10px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;
